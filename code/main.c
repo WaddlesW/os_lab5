@@ -20,5 +20,6 @@ int main(void)
         if (!parse_cmd(buf))
             return 0;
     }
+
     return -1;
 }

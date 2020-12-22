@@ -2,16 +2,12 @@
 实现ext2系统
 */
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-#include "mystruct.h"
+// #include <stdlib.h>
+// #include <stdint.h>
+// #include <stdio.h>
+// #include <string.h>
+// #include "mystruct.h"
 #include "./disk.c"
-#include "./ls.c"
-#include "./mkdir.c"
-#include "./cp.c"
-// #include "./touch.c"
 
 int read_block(unsigned int block_num, char *buf)
 {
@@ -206,10 +202,4 @@ void init_file_system()
         write_sp(spBlock);
     }
     return;
-}
-
-// 关闭系统
-void shutdown()
-{
-    close_disk();
 }

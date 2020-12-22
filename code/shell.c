@@ -1,11 +1,12 @@
 /*
 实现简单的 shell 以及 shell 命令以展示实现的功能
 */
-#include <stdio.h>
-#include <string.h>
+
 #include "mystruct.h"
 #include "ext2.h"
+#include "cmd.h"
 #include "./ext2.c"
+#include "./cmd.c"
 
 
 int getcmd(char *buf, int nbuf)
@@ -74,16 +75,3 @@ int parse_cmd(char *buf)
     return 1;
 }
 
-int main(void)
-{
-    static char buf[100];
-
-    init_file_system();
-
-    while (getcmd(buf, sizeof(buf)) >= 0)
-    {
-        if (!parse_cmd(buf))
-            return 0;
-    }
-    return -1;
-}

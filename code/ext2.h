@@ -49,6 +49,6 @@ int find_inode(char *path);
 /*
 函数功能：初始化文件系统
 */
-void init_file_system();
+void init_ext2();
 
 #endif

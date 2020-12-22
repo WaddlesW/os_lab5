@@ -2,6 +2,8 @@
 完成五条shell命令：ls、mkdir、touch、cp、shutdown
 */
 
+#include "disk.h"
+
 // #include <stdlib.h>
 // #include <stdint.h>
 // #include <stdio.h>
@@ -9,13 +11,14 @@
 // #include "mystruct.h"
 // #include "ext2.h"
 
+
 void ls(char *path)
 {
     inode inode_table[1024];
     read_inode(inode_table);
     int len = strlen(path);
     int inode_id = 0;
-    dirent block_buffer[8];
+    dir_item block_buffer[8];
     if (len > 1)
     {
         inode_id = find_inode(path);
@@ -45,7 +48,7 @@ int mkdir(char *path)
 {
     inode inode_table[1024];
     read_inode(inode_table);
-    dirent block_buffer[8];
+    dir_item block_buffer[8];
     char path_buf[20], name_buf[20];
     int father_inode_id = 1;
     int len = strlen(path);
@@ -109,7 +112,7 @@ int touch(char *path)
 {
     inode inode_table[1024];
     read_inode(inode_table);
-    dirent block_buffer[8];
+    dir_item block_buffer[8];
     char path_buf[20], name_buf[20];
     int father_inode_id = 1;
     int len = strlen(path);

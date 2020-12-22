@@ -2,11 +2,11 @@
 实现简单的 shell 以及 shell 命令以展示实现的功能
 */
 
-#include "mystruct.h"
 #include "ext2.h"
-#include "cmd.h"
 #include "./ext2.c"
-#include "./cmd.c"
+// #include "cmd.h"
+// #include "./cmd.c"
+// #include "mystruct.h"
 
 
 int getcmd(char *buf, int nbuf)
@@ -74,4 +74,3 @@ int parse_cmd(char *buf)
     }
     return 1;
 }
-

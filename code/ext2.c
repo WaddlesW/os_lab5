@@ -2,12 +2,17 @@
 实现ext2系统
 */
 
+#include "cmd.h"
+#include "./cmd.c"
+#include "./disk.c"
+
 // #include <stdlib.h>
 // #include <stdint.h>
 // #include <stdio.h>
 // #include <string.h>
 // #include "mystruct.h"
-#include "./disk.c"
+// #include "disk.h"
+
 
 int read_block(unsigned int block_num, char *buf)
 {
@@ -127,7 +132,7 @@ int find_inode(char *path)
         return 0;
     inode inode_table[1024];
     read_inode(inode_table);
-    dirent block_buffer[8];
+    dir_item block_buffer[8];
     int a = 0;
     int last = 0;
     char name_buf[20];
@@ -163,13 +168,13 @@ int find_inode(char *path)
     return a;
 }
 
-void init_file_system()
+void init_ext2()
 {
     char *p;
     char buf[1024];
     sp_block *spBlock;
     inode inode_table[1024];
-    dirent block_buffer[8];
+    dir_item block_buffer[8];
     spBlock = (sp_block *)malloc(sizeof(sp_block));
     open_disk();
     read_sp(spBlock);
